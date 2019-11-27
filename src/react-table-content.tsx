@@ -5,9 +5,20 @@ import TableRow from './components/TableRow';
 import TableCell from './components/TableCell';
 import P from './components/P';
 import Run from './components/Run';
+import TableGrid from './components/TableGrid';
+import GridCol from './components/GridCol';
+import TableProperties from './components/TableProperties';
+import TableWidth from './components/TableWidth';
 
 const content = (
   <Table>
+    <TableProperties>
+      <TableWidth width={8000} />
+    </TableProperties>
+    <TableGrid>
+      <GridCol w={4000} />
+      <GridCol w={4000} />
+    </TableGrid>
     <TableRow>
       <TableCell>
         <P>

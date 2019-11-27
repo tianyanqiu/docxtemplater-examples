@@ -70,7 +70,7 @@ export default class RawModule {
           ? ReactDOMServer.renderToStaticMarkup(value.react)
           : value.raw;
         return {
-          value: formattedValue.replace(/\t|\n| +/g, ''),
+          value: formattedValue.replace(/\t|\n/g, ''),
         };
       }
     }
