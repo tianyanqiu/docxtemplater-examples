@@ -9,11 +9,36 @@ import TableGrid from './components/TableGrid';
 import GridCol from './components/GridCol';
 import TableProperties from './components/TableProperties';
 import TableWidth from './components/TableWidth';
+import TableBorders from './components/TableBorders';
+import TopBorder from './components/TopBorder';
+import BottomBorder from './components/BottomBorder';
+import LeftBorder from './components/LeftBorder';
+import RightBorder from './components/RightBorder';
+import InsideHorizontalBorder from './components/InsideHorizontalBorder';
+import InsideVerticalBorder from './components/InsideVerticalBorder';
 
 const content = (
   <Table>
     <TableProperties>
       <TableWidth width={8000} />
+      <TableBorders>
+        <TopBorder value="single" size={4} space={0} color="DBDBDB" />
+        <LeftBorder value="single" size={4} space={0} color="DBDBDB" />
+        <BottomBorder value="single" size={4} space={0} color="DBDBDB" />
+        <RightBorder value="single" size={4} space={0} color="DBDBDB" />
+        <InsideHorizontalBorder
+          value="single"
+          size={4}
+          space={0}
+          color="DBDBDB"
+        />
+        <InsideVerticalBorder
+          value="single"
+          size={4}
+          space={0}
+          color="DBDBDB"
+        />
+      </TableBorders>
     </TableProperties>
     <TableGrid>
       <GridCol w={4000} />
