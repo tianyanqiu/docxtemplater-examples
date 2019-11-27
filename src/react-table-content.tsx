@@ -22,7 +22,7 @@ import GridColumn from './components/GridColumn';
 const content = (
   <Table>
     <TableProperties>
-      <TableWidth width={8000} />
+      <TableWidth width={8000} type="dxa" />
       <TableBorders>
         <TopBorder value="single" size={4} space={0} color="DBDBDB" />
         <LeftBorder value="single" size={4} space={0} color="DBDBDB" />
