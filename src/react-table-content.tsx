@@ -5,8 +5,6 @@ import TableRow from './components/TableRow';
 import TableCell from './components/TableCell';
 import P from './components/P';
 import Run from './components/Run';
-import TableGrid from './components/TableGrid';
-import GridCol from './components/GridCol';
 import TableProperties from './components/TableProperties';
 import TableWidth from './components/TableWidth';
 import TableBorders from './components/TableBorders';
@@ -16,6 +14,10 @@ import LeftBorder from './components/LeftBorder';
 import RightBorder from './components/RightBorder';
 import InsideHorizontalBorder from './components/InsideHorizontalBorder';
 import InsideVerticalBorder from './components/InsideVerticalBorder';
+import TableCellProperties from './components/TableCellProperties';
+import TableCellWidth from './components/TableCellWidth';
+import TableGrid from './components/TableGrid';
+import GridColumn from './components/GridColumn';
 
 const content = (
   <Table>
@@ -39,13 +41,17 @@ const content = (
           color="DBDBDB"
         />
       </TableBorders>
+      <TableWidth width={8000} type="dxa" />
     </TableProperties>
     <TableGrid>
-      <GridCol w={4000} />
-      <GridCol w={4000} />
+      <GridColumn width={4000} />
+      <GridColumn width={4000} />
     </TableGrid>
     <TableRow>
       <TableCell>
+        <TableCellProperties>
+          <TableCellWidth width={4000} type="dxa" />
+        </TableCellProperties>
         <P>
           <Run>
             <Text>第一列</Text>
@@ -53,6 +59,9 @@ const content = (
         </P>
       </TableCell>
       <TableCell>
+        <TableCellProperties>
+          <TableCellWidth width={4000} type="dxa" />
+        </TableCellProperties>
         <P>
           <Run>
             <Text>第二列</Text>
