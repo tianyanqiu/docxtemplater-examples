@@ -24,6 +24,16 @@ interface Props {
   data: { [name: string]: any }[];
 }
 
+const getWidth = (idx: number) => {
+  if (idx === 0) {
+    return 800;
+  }
+  if (idx === 1) {
+    return 6000;
+  }
+  return 1200;
+};
+
 const FileList: React.SFC<Props> = ({ data }) => {
   const columns =
     data && data.length > 0 ? ['序号', '附件名称', '附件大小'] : [];
@@ -51,16 +61,16 @@ const FileList: React.SFC<Props> = ({ data }) => {
         </TableBorders>
       </TableProperties>
       <TableGrid>
-        {columns.map(() => (
-          <GridColumn width={8000 / columns.length} />
+        {columns.map((_column, idx) => (
+          <GridColumn width={getWidth(idx)} />
         ))}
       </TableGrid>
 
       <TableRow>
-        {columns.map((column) => (
+        {columns.map((column, idx) => (
           <TableCell>
             <TableCellProperties>
-              <TableCellWidth width={8000 / columns.length} type="dxa" />
+              <TableCellWidth width={getWidth(idx)} type="dxa" />
               <TableCellShading value="clear" fill="c9c4c4" />
             </TableCellProperties>
             <P>
@@ -76,7 +86,7 @@ const FileList: React.SFC<Props> = ({ data }) => {
         <TableRow>
           <TableCell>
             <TableCellProperties>
-              <TableCellWidth width={8000 / columns.length} type="dxa" />
+              <TableCellWidth width={800} type="dxa" />
             </TableCellProperties>
             <P>
               <Run>
@@ -86,7 +96,7 @@ const FileList: React.SFC<Props> = ({ data }) => {
           </TableCell>
           <TableCell>
             <TableCellProperties>
-              <TableCellWidth width={8000 / columns.length} type="dxa" />
+              <TableCellWidth width={6000} type="dxa" />
             </TableCellProperties>
             <P>
               <Run>
@@ -96,7 +106,7 @@ const FileList: React.SFC<Props> = ({ data }) => {
           </TableCell>
           <TableCell>
             <TableCellProperties>
-              <TableCellWidth width={8000 / columns.length} type="dxa" />
+              <TableCellWidth width={1200} type="dxa" />
             </TableCellProperties>
             <P>
               <Run>
