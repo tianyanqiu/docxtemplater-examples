@@ -1,8 +1,11 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-useless-constructor */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable class-methods-use-this */
 import ReactDOMServer from 'react-dom/server';
 import DocxTemplater from 'docxtemplater';
+import React from 'react';
+import TemplaterContext from '../../components/TemplaterContext';
 
 const moduleName = 'raw';
 const { DocUtils, Errors } = DocxTemplater;
@@ -27,6 +30,10 @@ export default class RawModule {
 
   private fileTypeConfig: any;
 
+  private xmlDocuments: any;
+
+  private docxtemplater: any;
+
   public constructor(private data: any = {}) {
     this.name = 'RawModule';
     console.log(`创建${this.name}`);
@@ -34,7 +41,19 @@ export default class RawModule {
 
   optionsTransformer(options: any, docxtemplater: any) {
     this.fileTypeConfig = docxtemplater.fileTypeConfig;
+    this.docxtemplater = docxtemplater;
+    const relsFiles = docxtemplater.zip
+      .file(/\.xml\.rels/)
+      .concat(docxtemplater.zip.file(/\[Content_Types\].xml/))
+      .map((file: any) => file.name);
+    options.xmlFileNames = options.xmlFileNames.concat(relsFiles);
     return options;
+  }
+
+  set(options: any) {
+    if (options.xmlDocuments) {
+      this.xmlDocuments = options.xmlDocuments;
+    }
   }
 
   parse(placeHolderContent: string) {
@@ -58,6 +77,19 @@ export default class RawModule {
     });
   }
 
+  private wrapContext(element: React.ReactNode) {
+    return React.createElement(
+      TemplaterContext.Provider,
+      {
+        value: {
+          docxTemplater: this.docxtemplater,
+          xmlDocuments: this.xmlDocuments,
+        },
+      },
+      element,
+    );
+  }
+
   public render(part: any, options: any) {
     if (part.module !== moduleName) {
       return null;
@@ -67,8 +99,9 @@ export default class RawModule {
       const value = options.scopeManager.getValue(part.value, { part });
       if (typeof value === 'object' && (value.raw || value.react)) {
         const formattedValue = value.react
-          ? ReactDOMServer.renderToStaticMarkup(value.react)
+          ? ReactDOMServer.renderToStaticMarkup(this.wrapContext(value.react))
           : value.raw;
+
         return {
           value: formattedValue.replace(/\t|\n/g, ''),
         };

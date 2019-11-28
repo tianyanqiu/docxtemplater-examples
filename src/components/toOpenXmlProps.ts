@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const toOpenXmlProps = <T extends {}>(props: T): T => {
+const toOpenXmlProps = <T extends {}>(props: T, namespace = 'w'): T => {
   const result: any = {};
   Object.keys(props).forEach((key) => {
     const value = (props as any)[key];
@@ -7,7 +7,9 @@ const toOpenXmlProps = <T extends {}>(props: T): T => {
       return;
     }
 
-    result[key.startsWith('w:') ? key : `w:${key}`] = value.toString();
+    result[
+      key.startsWith(`${namespace}:`) ? key : `${namespace}:${key}`
+    ] = value.toString();
   });
 
   return result;
