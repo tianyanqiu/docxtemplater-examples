@@ -25,6 +25,25 @@ const fileList = [
   { id: '003', title: '附件三.pptx', fileLength: 780 },
 ];
 
+export const ideas = [
+  {
+    id: '001',
+    content: '同意下发',
+    createTime: '2019-11-27',
+    user: {
+      userName: '张三',
+    },
+  },
+  {
+    id: '002',
+    content: '审批意见',
+    createTime: '2019-11-28',
+    user: {
+      userName: '李四',
+    },
+  },
+];
+
 export { fileList };
 
 export default data;
