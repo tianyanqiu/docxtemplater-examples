@@ -19,4 +19,12 @@ const data = [
   },
 ];
 
+const fileList = [
+  { id: '001', title: '附件一.docx', fileLength: 1243434 },
+  { id: '002', title: '附件二.xls', fileLength: 13435 },
+  { id: '003', title: '附件三.pptx', fileLength: 780 },
+];
+
+export { fileList };
+
 export default data;
