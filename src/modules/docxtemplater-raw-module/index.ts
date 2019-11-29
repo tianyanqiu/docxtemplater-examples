@@ -2,9 +2,9 @@
 /* eslint-disable no-useless-constructor */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable class-methods-use-this */
-import ReactDOMServer from 'react-dom/server';
 import DocxTemplater from 'docxtemplater';
 import React from 'react';
+import { render } from '../../react-template-docx';
 import TemplaterContext from '../../components/TemplaterContext';
 
 const moduleName = 'raw';
@@ -99,7 +99,7 @@ export default class RawModule {
       const value = options.scopeManager.getValue(part.value, { part });
       if (typeof value === 'object' && (value.raw || value.react)) {
         const formattedValue = value.react
-          ? ReactDOMServer.renderToStaticMarkup(this.wrapContext(value.react))
+          ? render(this.wrapContext(value.react))
           : value.raw;
 
         return {

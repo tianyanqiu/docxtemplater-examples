@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import Text from './components/Text';
 import Table from './components/Table';
@@ -50,14 +51,14 @@ const SubformList: React.SFC<Props> = ({ data }) => {
         </TableBorders>
       </TableProperties>
       <TableGrid>
-        {columns.map(() => (
-          <GridColumn width={8000 / columns.length} />
+        {columns.map((_, index) => (
+          <GridColumn width={8000 / columns.length} key={index} />
         ))}
       </TableGrid>
 
       <TableRow>
-        {columns.map((column) => (
-          <TableCell>
+        {columns.map((column, index) => (
+          <TableCell key={index}>
             <TableCellProperties>
               <TableCellWidth width={8000 / columns.length} type="dxa" />
               <TableCellShading value="clear" fill="c9c4c4" />
@@ -71,10 +72,10 @@ const SubformList: React.SFC<Props> = ({ data }) => {
         ))}
       </TableRow>
 
-      {data.map((item) => (
-        <TableRow>
-          {columns.map((column) => (
-            <TableCell>
+      {data.map((item, idx) => (
+        <TableRow key={idx}>
+          {columns.map((column, index) => (
+            <TableCell key={index}>
               <TableCellProperties>
                 <TableCellWidth width={8000 / columns.length} type="dxa" />
               </TableCellProperties>

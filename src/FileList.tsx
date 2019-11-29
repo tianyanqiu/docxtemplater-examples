@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import Text from './components/Text';
 import Table from './components/Table';
@@ -62,13 +64,13 @@ const FileList: React.SFC<Props> = ({ data }) => {
       </TableProperties>
       <TableGrid>
         {columns.map((_column, idx) => (
-          <GridColumn width={getWidth(idx)} />
+          <GridColumn width={getWidth(idx)} key={idx} />
         ))}
       </TableGrid>
 
       <TableRow>
         {columns.map((column, idx) => (
-          <TableCell>
+          <TableCell key={idx}>
             <TableCellProperties>
               <TableCellWidth width={getWidth(idx)} type="dxa" />
               <TableCellShading value="clear" fill="c9c4c4" />
@@ -83,7 +85,7 @@ const FileList: React.SFC<Props> = ({ data }) => {
       </TableRow>
 
       {data.map((item, index) => (
-        <TableRow>
+        <TableRow key={item.id}>
           <TableCell>
             <TableCellProperties>
               <TableCellWidth width={800} type="dxa" />

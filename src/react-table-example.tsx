@@ -1,3 +1,4 @@
+import React from 'react';
 import genDocx from './genDocx';
 import content from './react-table-content';
 import SubformList from './SubformList';
@@ -10,12 +11,12 @@ genDocx('basic-style-template.docx', 'react-table.docx', {
     react: content,
   },
   子表单: {
-    react: SubformList({ data }),
+    react: <SubformList data={data} />,
   },
   附件: {
-    react: FileList({ data: fileList }),
+    react: <FileList data={fileList} />,
   },
   审批意见: {
-    react: IdeaList({ ideas }),
+    react: <IdeaList ideas={ideas} />,
   },
 });

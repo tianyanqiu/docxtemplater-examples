@@ -20,7 +20,7 @@ const IdeaList: React.SFC<Props> = ({ ideas }) => {
   return (
     <>
       {(ideas || []).map((idea) => (
-        <>
+        <React.Fragment key={idea.id}>
           <P key={idea.id}>
             <Run>
               <Text>{`${idea.user.userName}（${idea.createTime}）：`}</Text>
@@ -32,7 +32,7 @@ const IdeaList: React.SFC<Props> = ({ ideas }) => {
             </Run>
           </P>
           <P />
-        </>
+        </React.Fragment>
       ))}
     </>
   );
