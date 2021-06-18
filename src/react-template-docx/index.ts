@@ -66,7 +66,12 @@ function render(element: React.ReactNode) {
     false,
     false,
   );
-  ReactTemplateDocxRender.updateContainer(element, container, null, null);
+  ReactTemplateDocxRender.updateContainer(
+    element,
+    container,
+    null,
+    null as any,
+  );
 
   return nodeToXmlString(containerInfo);
 }

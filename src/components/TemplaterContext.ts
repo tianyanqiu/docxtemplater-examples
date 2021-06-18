@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface TemplaterContextInterface {
+export interface TemplaterContextInterface {
   docxTemplater: any;
   xmlDocuments: any;
 }
